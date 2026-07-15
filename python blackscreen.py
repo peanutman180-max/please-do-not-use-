@@ -69,8 +69,6 @@ root.attributes("-topmost", True)
 root.overrideredirect(True)
 root.configure(bg="black")
 
-root.bind("<Escape>", lambda e: root.destroy())
-
 label = tk.Label(
     root,
     text=ASCII,
