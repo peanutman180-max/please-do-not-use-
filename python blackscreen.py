@@ -83,14 +83,9 @@ label.place(relx=0.5, rely=0.5, anchor="center")
 root.mainloop()
 import keyboard
 
-import tkinter as tk
+# Blocks Alt+F4 and Alt+Tab globally
+keyboard.add_hotkey("alt + f4", lambda: None, suppress=True)
+keyboard.add_hotkey("alt + tab", lambda: None, suppress=True)
 
-root = tk.Tk()
-
-def ignore_all(event):
-    print(f"Ignored: {event.keysym}")
-    return "break"
-
-root.bind("<Key>", ignore_all)
-
-root.mainloop()
+# Keep the script running to maintain the block
+keyboard.wait('esc')   
