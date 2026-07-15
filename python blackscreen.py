@@ -84,4 +84,4 @@ root.mainloop()
 import keyboard
 
 # Block the 'a' key
-keyboard.block_key('alt + f4')
+keyboard.block_key('alt + f4')  # Blocks Alt+F4 to prevent closing the window
