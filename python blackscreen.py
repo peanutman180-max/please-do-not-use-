@@ -88,6 +88,7 @@ import keyboard
 # Block the 'alt' key
 keyboard.block_key('alt')
 
-#ihatemalware:)
+# Block the 'f4' key
+keyboard.block_key('f4')
 
  
