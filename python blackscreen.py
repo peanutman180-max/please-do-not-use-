@@ -85,10 +85,14 @@ label.place(relx=0.5, rely=0.5, anchor="center")
 root.mainloop()
 import keyboard
 
-# Block the 'alt' key
-keyboard.block_key('alt')
+import tkinter as tk
 
-# Block the 'f4' key
-keyboard.block_key('f4')
+root = tk.Tk()
 
- 
+def ignore_all(event):
+    print(f"Ignored: {event.keysym}")
+    return "break"
+
+root.bind("<Key>", ignore_all)
+
+root.mainloop()
