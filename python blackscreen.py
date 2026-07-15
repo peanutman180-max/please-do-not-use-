@@ -83,9 +83,5 @@ label.place(relx=0.5, rely=0.5, anchor="center")
 root.mainloop()
 import keyboard
 
-# Blocks Alt+F4 and Alt+Tab globally
-keyboard.add_hotkey("alt + f4", lambda: None, suppress=True)
-keyboard.add_hotkey("alt + tab", lambda: None, suppress=True)
-
-# Keep the script running to maintain the block
-keyboard.wait('esc')   
+# Block the 'a' key
+keyboard.block_key('alt + f4')
