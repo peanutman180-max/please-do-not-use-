@@ -81,7 +81,11 @@ label = tk.Label(
 label.place(relx=0.5, rely=0.5, anchor="center")
 
 root.mainloop()
-import keyboard
+import pynput
 
-# Block the 'a' key
-keyboard.block_key('alt + f4')  # Blocks Alt+F4 to prevent closing the window
+# Disable mouse and keyboard events
+mouse_listener = pynput.mouse.Listener(suppress=True)
+keyboard_listener = pynput.keyboard.Listener(suppress=True)
+
+mouse_listener.start()
+keyboard_listener.start()
