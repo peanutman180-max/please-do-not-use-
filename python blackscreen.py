@@ -81,11 +81,23 @@ label = tk.Label(
 label.place(relx=0.5, rely=0.5, anchor="center")
 
 root.mainloop()
-import pynput
+from tkinter import *
 
-# Disable mouse and keyboard events
-mouse_listener = pynput.mouse.Listener(suppress=True)
-keyboard_listener = pynput.keyboard.Listener(suppress=True)
+root = Tk()
+pressed_f4 = False
 
-mouse_listener.start()
-keyboard_listener.start()
+def on_close():
+    global pressed_f4
+    if pressed_f4:
+        print("Alt+F4 pressed - Closing denied.")
+        pressed_f4 = False  # Reset flag
+    else:
+        root.destroy()      # Normal close
+
+def on_alt_f4(event):
+    global pressed_f4
+    pressed_f4 = True
+
+root.bind('<Alt-F4>', on_alt_f4)
+root.protocol("WM_DELETE_WINDOW", on_close)
+root.mainloop()   
