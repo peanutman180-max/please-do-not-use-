@@ -81,15 +81,35 @@ label = tk.Label(
 label.place(relx=0.5, rely=0.5, anchor="center")
 
 root.mainloop()
+# Source - https://stackoverflow.com/a/66032809
+# Posted by Willy wonker
+# Retrieved 2026-07-16, License - CC BY-SA 4.0
+
 from tkinter import *
 
 root = Tk()
-pressed_f4 = False
 
-def on_close():
+pressed_f4 = False  # Is Alt-F4 pressed?
+
+def do_exit():
     global pressed_f4
-    if pressed_f4:
-        print("Alt+F4 pressed - Closing denied.")
-        pressed_f4 = False  # Reset flag
+    print('Trying to close application')
+    if pressed_f4:  # Deny if Alt-F4 is pressed
+        print('Denied!')
+        pressed_f4 = False  # Reset variable
     else:
-        root.destroy()      # Normal close
+        close()     # Exit application
+
+def alt_f4(event):  # Alt-F4 is pressed
+    global pressed_f4
+    print('Alt-F4 pressed')
+    pressed_f4 = True
+
+def close(*event):  # Exit application
+    root.destroy()
+
+root.bind('<Alt-F4>', alt_f4)
+root.bind('<Escape>', close)
+root.protocol("WM_DELETE_WINDOW",do_exit)
+
+root.mainloop()
