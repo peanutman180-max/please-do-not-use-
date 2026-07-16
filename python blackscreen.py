@@ -93,11 +93,3 @@ def on_close():
         pressed_f4 = False  # Reset flag
     else:
         root.destroy()      # Normal close
-
-def on_alt_f4(event):
-    global pressed_f4
-    pressed_f4 = True
-
-root.bind('<Alt-F4>', on_alt_f4)
-root.protocol("WM_DELETE_WINDOW", on_close)
-root.mainloop()   
